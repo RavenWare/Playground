@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type node struct {
 	data  int
 	left  *node
@@ -68,6 +70,33 @@ func (tree *node) insert(val int) {
 	}
 }
 
+func (tree *node) inOrderTreeWalk() {
+
+	if tree != nil {
+		tree.left.inOrderTreeWalk()
+		fmt.Println(*tree)
+		tree.right.inOrderTreeWalk()
+	}
+}
+
+func (tree *node) preOrderTreeWalk() {
+
+	if tree != nil {
+		fmt.Println(*tree)
+		tree.left.preOrderTreeWalk()
+		tree.right.preOrderTreeWalk()
+	}
+}
+
+func (tree *node) postOrderTreeWalk() {
+
+	if tree != nil {
+		tree.left.postOrderTreeWalk()
+		tree.right.postOrderTreeWalk()
+		fmt.Println(*tree)
+	}
+}
+
 func main() {
 
 	// var (
@@ -92,5 +121,12 @@ func main() {
 	root.insert(17)
 	root.insert(13)
 	root.insert(9)
+
+	fmt.Println("\\\\inOrderTreeWalk\\\\")
+	root.inOrderTreeWalk()
+	fmt.Println("\\\\preOrderTreeWalk\\\\")
+	root.preOrderTreeWalk()
+	fmt.Println("\\\\postOrderTreeWalk\\\\")
+	root.postOrderTreeWalk()
 
 }
