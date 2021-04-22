@@ -59,6 +59,9 @@ func main() {
 	// Encodes the hash table and outputs to a file
 	encoder.Encode(kv)
 
+	// Zip key value store, kv, and save it to file tinyDB.gz
+	ZipToFile(kv, "tinyDB.gz")
+
 	/*
 		Let's:
 		> read the output file
